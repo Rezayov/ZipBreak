@@ -11,19 +11,19 @@ class Target:
     def adding_inputs(self):
         parser = argparse.ArgumentParser()
         parser.add_argument("--filename", default="Target.zip")
-        parser.add_argument("--lenght", type=int)
+        parser.add_argument("--length", type=int)
         arguments = parser.parse_args()
         self.location = arguments.filename
-        self.lenght = arguments.lenght
+        self.length = arguments.length
 
     def cracker(self):
         MainPass = list("0123456789")
-        Indexes = [0] * self.lenght
-        PassNumbers = len(MainPass) ** self.lenght
+        Indexes = [0] * self.length
+        PassNumbers = len(MainPass) ** self.length
         with zipfile.ZipFile(self.location) as Target_File:
             for i in range(PassNumbers - 1):
                 TempPass = ""
-                for j in range(self.lenght):
+                for j in range(self.length):
                     TempPass += MainPass[Indexes[j]]
                 print("Trying password: ", TempPass, end="")
                 try:
